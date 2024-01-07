@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Adicione um arquivo de estilo personalizado se necessário -->
+    <title>Shop Online - Sua Loja de Tecnologia</title>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header class="bg-dark text-white text-center py-5">
+        <div class="container">
+            <img src="img/logo.png" alt="Shop Online Logo" class="d-block w-50 mx-auto img-fluid">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Produtos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Categorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="carousel slide" id="destaques" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/produtos/iphone.jpg" class="d-block w-50 mx-auto" alt="iPhone 13 em Promoção">
+                <div class="carousel-caption d-none d-md-block text-light mt-auto">
+                    <h5>
+                        <span class="bg-dark px-2 py-2">
+                            iPhone
+                        </span>
+                    </h5>
+                    <p>
+                        <span class="bg-dark px-2 py-2">
+                            iPhone 13. 256gb. Super Promoção!
+                        </span>
+                    </p>
+                    <p>
+                        <span class="bg-dark px-2 py-2">
+                            R$2000,00
+                        </span>
+                    </p>
+                    <button type="submit" class="btn btn-primary">Comprar</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/produtos/laptop.jpg" class="d-block w-50 mx-auto" alt="Notebook i7 16gb de RAM">
+                <div class="carousel-caption d-none d-md-block text-light mt-auto">
+                    <h5>
+                        <span class="bg-dark px-2 py-2">
+                            Notebook i7
+                        </span>
+                    </h5>
+                    <p>
+                        <span class="bg-dark px-2 py-2">
+                            Super notebook com Intel i7, 16GB de RAM e 256gb NVMe.
+                        </span>
+                    </p>
+                    <p>
+                        <span class="bg-dark px-2 py-2">
+                            R$3000,00
+                        </span>
+                    </p>
+                    <button type="submit" class="btn btn-primary">Comprar</button>
+                </div>
+            </div>
+            <!-- Adicione descrições e preços para outros itens do carrossel -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#destaques" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#destaques" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </section> 
+
+    <!-- Seção de Produtos em Destaque -->
+    <section id="produtos-destaque" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Produtos em Destaque</h2>
+        <div class="row">
+            <!-- Produto 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="img/produtos/iphone.jpg" class="card-img-top" alt="Produto 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome do Produto 1</h5>
+                        <p class="card-text">Descrição breve do Produto 1.</p>
+                        <button class="btn btn-primary">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="img/produtos/laptop.jpg" class="card-img-top" alt="Produto 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome do Produto 2</h5>
+                        <p class="card-text">Descrição breve do Produto 2.</p>
+                        <button class="btn btn-primary">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="img/produtos/jbl.jpg" class="card-img-top" alt="Produto 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome do Produto 3</h5>
+                        <p class="card-text">Descrição breve do Produto 3.</p>
+                        <button class="btn btn-primary">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Categorias de Produtos -->
+    <section id="categorias" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Categorias</h2>
+            <div class="row">
+                <!-- Adicione links para categorias aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testemunhos de Clientes -->
+    <section id="testemunhos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">O que Nossos Clientes Dizem</h2>
+            <div class="row">
+                <!-- Adicione testemunhos de clientes aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Inscrição -->
+    <section id="inscricao" class="bg-dark text-white py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Inscreva-se para Ofertas Exclusivas</h2>
+            <form>
+                <!-- Adicione campos do formulário de inscrição aqui -->
+                <button type="submit" class="btn btn-primary">Inscrever-se</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="text-center py-3">
+        <p>&copy; 2023 TechStore. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts Bootstrap (JavaScript) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
