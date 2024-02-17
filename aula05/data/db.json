@@ -1,0 +1,26 @@
+{
+  "alunos": [
+    {
+      "id": "1",
+      "nome": "João",
+      "email": "joao@gmail.com"
+    },
+    {
+      "id": "c3a3",
+      "nome": "Bob Esponja",
+      "email": "bob@gmail.com"
+    }
+  ],
+  "noticias": [
+    {
+        "id": 1,
+        "titulo": "COOPERE lança edital de submissão de TCCs para a revista Diálogos Científicos",
+        "texto": "COOPERE lança edital de submissão de TCCs para a revista Diálogos Científicos"
+    },
+    {
+        "id": 2,
+        "titulo": "PAI abre chamada para seleção de novos participantes para semestre 2024.1",
+        "texto": "O Núcleo de Pronto Atendimento Institucional (PAI) abriu inscrições para o processo de seleção de novos participantes no semestre de 2024.1. Serão disponibilizadas 25 vagas, das quais 20 são para exercício das atividades de extensão e 05 para cadastro de reserva. O interessado tem até o dia 01 de março para se inscrever." 
+    }
+  ]
+}
