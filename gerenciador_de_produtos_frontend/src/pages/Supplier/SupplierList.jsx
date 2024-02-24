@@ -1,10 +1,12 @@
 import React from 'react'
 import axios from '../../api'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const SupplierList = () => {
 
     const [suppliers, setSuppliers] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get('/suppliers')
@@ -34,7 +36,7 @@ const SupplierList = () => {
   return (
     <div className="container mt-5">
         <h2 className="mb-4">Lista de Fornecedores</h2>
-        <button className="btn btn-primary mb-2">Adicionar Fornecedor</button>
+        <button onClick={() => navigate('/add-fornecedor')} className="btn btn-primary mb-2">Adicionar Fornecedor</button>
         <table className="table">
             <thead>
                 <tr>
