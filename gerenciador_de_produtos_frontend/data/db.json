@@ -1,0 +1,16 @@
+{
+  "suppliers": [
+    {
+      "id": "1",
+      "name": "Urbano LTDA",
+      "cnpj": "85.317.193/0001-61",
+      "email": "sac@urbano.com.br"
+    },
+    {
+      "id": "2",
+      "name": "Urbano 3 LTDA",
+      "cnpj": "85.317.193/0001-61",
+      "email": "sac@urbano.com.br"
+    }
+  ]
+}
