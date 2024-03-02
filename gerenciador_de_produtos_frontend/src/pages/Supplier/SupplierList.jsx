@@ -54,7 +54,7 @@ const SupplierList = () => {
                           <td>{supplier.cnpj}</td>
                           <td>{supplier.email}</td>
                           <td>
-                            <button className="btn btn-sm btn-warning mr-2">Editar</button>
+                            <button className="btn btn-sm btn-warning mr-2" onClick={() => navigate(`/editar-fornecedor/${supplier.id}`)}>Editar</button>
                             <button onClick={() => deleteSupplier(supplier.id)} className="btn btn-sm btn-danger">Excluir</button>
                             
                           </td>        

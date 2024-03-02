@@ -16,6 +16,8 @@ const SupplierForm = () => {
                 setSupplier(response.data)
             })
             .catch(error => console.error('Erro ao buscar fornecedor', error))
+        } else {
+            setSupplier({ name: '', cnpj: '', email: ''})
         }
     }, [id])
 
@@ -31,15 +33,15 @@ const SupplierForm = () => {
 
         axios[method](url, supplier)
         .then(() => {
-            alert('Fornecedor adicionado com sucesso!')
-            navigate("/")
+            alert(`Fornecedor ${id ? 'atualizado' : 'adicionado'} com sucesso!`)
+            navigate("/listar-fornecedores")
         })
         .catch(error => console.error("Ocorreu um erro: ",error))
     }
 
   return (
     <div className="container mt-5">
-        <h2>Adicionar Fornecedor</h2>
+        <h2>{id ? 'Editar Fornecedor' : 'Adicionar Fornecedor'}</h2>
         <form onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="name">Nome do fornecedor:</label>
