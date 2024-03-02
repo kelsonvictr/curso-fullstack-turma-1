@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from '../../api'
 
 const SupplierForm = () => {
 
     const [supplier, setSupplier] = useState({ name: '', cnpj: '', email: ''})
     const navigate = useNavigate()
+    const { id } = useParams()
+
+    useEffect(() => {
+        if (id) {
+            axios.get(`/suppliers/${id}`)
+            .then(response => {
+                setSupplier(response.data)
+            })
+            .catch(error => console.error('Erro ao buscar fornecedor', error))
+        }
+    }, [id])
 
     function handleChange(event) {
         const { name, value } = event.target
@@ -15,8 +26,10 @@ const SupplierForm = () => {
 
     function handleSubmit(event) {
         event.preventDefault()
+        const method = id ? 'put' : 'post'
+        const url = id ? `/suppliers/${id}` : '/suppliers'
 
-        axios.post('/suppliers', supplier)
+        axios[method](url, supplier)
         .then(() => {
             alert('Fornecedor adicionado com sucesso!')
             navigate("/")
