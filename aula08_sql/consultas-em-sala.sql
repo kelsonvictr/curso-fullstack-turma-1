@@ -21,6 +21,9 @@ insert into produtos (nome, preco, estoque) values
 insert into produtos (nome, preco, estoque) values
 ('Ar-Condicionado', 4000.00, 100);
 
+insert into produtos (nome, preco, estoque) values
+('Ar-Condicionado', 4000.00, 100);
+
 
 -- Selecionar os produtos cadastrados:
 
@@ -79,4 +82,32 @@ foreign key (especialidade_medica_id)
 references especialidade_medica(id);
 
 
+-- atualize o preço de um produto especifico para 12.50 e a
+-- quantidade em estoque pra 95
+
+update produtos set preco = 12.50 where id = 1;
+update produtos set estoque = 95 where id = 1;
+
+
+-- joins
+
+insert into produtos (nome, preco, estoque, fornecedor_id) values
+('iphone', 4000.00, 100, 2);
+
+select p.nome, p.preco, f.nome from produtos p join fornecedores f 
+on p.fornecedor_id = f.id where f.id = 2;
+
+-- fazer um join para mostrar o nome do médico e a 
+-- especialidade dele
+
+insert into medicos (nome, crm, especialidade_medica_id) 
+values ('Dr Java', '123JAVINHA', 1);
+insert into medicos (nome, crm, especialidade_medica_id)
+values ('Dr Spring', '321SPRING', 1);
+
+select m.nome, m.crm, em.nome  from medicos m join especialidade_medica em 
+on em.id = m.especialidade_medica_id 
+where em.id = 1;
+
+select * from medicos m where id in (1,2);
 
