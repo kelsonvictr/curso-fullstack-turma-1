@@ -1,6 +1,6 @@
 package org.example;
 
-public class Produto {
+public class Produto implements Negociavel {
     private String nome;
     private double preco;
     private int quantidadeEmEstoque;
@@ -37,5 +37,15 @@ public class Produto {
 
     public void exibirInformacoes() {
         System.out.println("Nome: "+ nome+ ", Preço: "+preco+", Estoque:"+quantidadeEmEstoque);
+    }
+
+    @Override
+    public void negociar() {
+        if (quantidadeEmEstoque > 0)  {
+            quantidadeEmEstoque--;
+            System.out.println("Produto negociado. Estoque atual: " + quantidadeEmEstoque);
+        } else {
+            System.out.println("Não há estoque suficiente para negociar.");
+        }
     }
 }

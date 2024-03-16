@@ -9,7 +9,7 @@ public class FornecedorPremium extends Fornecedor {
 
     private double taxaDesconto;
 
-    public FornecedorPremium(Long id, String nome, String telefone) {
+    public FornecedorPremium(Long id, String nome, String telefone, double taxaDesconto) {
         super(id, nome, telefone);
         this.taxaDesconto = taxaDesconto;
     }
