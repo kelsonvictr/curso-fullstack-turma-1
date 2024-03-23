@@ -8,7 +8,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class SupplierServiceImpl implements SupplierService {
@@ -26,5 +28,17 @@ public class SupplierServiceImpl implements SupplierService {
         ));
 
         return new SupplierResponse(supplier.getId(), supplier.getName(), supplier.getEmail(), supplier.getCnpj());
+    }
+
+    @Override
+    public List<SupplierResponse> findAll() {
+        return supplierRepository.findAll().stream()
+                .map(supplier ->  new SupplierResponse(
+                        supplier.getId(),
+                        supplier.getName(),
+                        supplier.getEmail(),
+                        supplier.getCnpj()
+                ))
+                .collect(Collectors.toList());
     }
 }

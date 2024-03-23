@@ -6,10 +6,9 @@ import br.com.gerenciadordeprodutos.api.Supplier.service.SupplierService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/suppliers")
@@ -23,5 +22,12 @@ public class SupplierController {
         SupplierResponse supplierResponse = supplierService.create(supplierRequest);
 
         return ResponseEntity.ok(supplierResponse);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<SupplierResponse>> getAllSupliers() {
+        List<SupplierResponse> supplierResponses = supplierService.findAll();
+
+        return ResponseEntity.ok(supplierResponses);
     }
 }
