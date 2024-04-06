@@ -37,6 +37,18 @@ public class SupplierController {
         return supplierService.findById(id);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public SupplierResponse update(@PathVariable UUID id, @Valid @RequestBody SupplierRequest supplierRequest) {
+        return supplierService.update(id, supplierRequest);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable UUID id) {
+        supplierService.deleteById(id);
+    }
+
 
 
 }
