@@ -5,10 +5,12 @@ import br.com.gerenciadordeprodutos.api.Supplier.dtos.SupplierResponse;
 import br.com.gerenciadordeprodutos.api.Supplier.service.SupplierService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/suppliers")
@@ -18,16 +20,23 @@ public class SupplierController {
     SupplierService supplierService;
 
     @PostMapping
-    public ResponseEntity<SupplierResponse> createSupplier(@Valid @RequestBody SupplierRequest supplierRequest) {
-        SupplierResponse supplierResponse = supplierService.create(supplierRequest);
-
-        return ResponseEntity.ok(supplierResponse);
+    @ResponseStatus(HttpStatus.CREATED)
+    public SupplierResponse create(@Valid @RequestBody SupplierRequest supplierRequest) {
+        return supplierService.create(supplierRequest);
     }
 
     @GetMapping
-    public ResponseEntity<List<SupplierResponse>> getAllSupliers() {
-        List<SupplierResponse> supplierResponses = supplierService.findAll();
-
-        return ResponseEntity.ok(supplierResponses);
+    @ResponseStatus(HttpStatus.OK)
+    public List<SupplierResponse> findAll() {
+        return supplierService.findAll();
     }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public SupplierResponse findById(@PathVariable UUID id) {
+        return supplierService.findById(id);
+    }
+
+
+
 }

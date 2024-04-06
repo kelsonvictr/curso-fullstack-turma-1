@@ -1,14 +1,13 @@
 package br.com.gerenciadordeprodutos.api.Supplier.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -18,9 +17,7 @@ import java.util.UUID;
 public class Supplier implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String name;
@@ -28,6 +25,9 @@ public class Supplier implements Serializable {
     private String email;
 
     private String cnpj;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
 
 }
