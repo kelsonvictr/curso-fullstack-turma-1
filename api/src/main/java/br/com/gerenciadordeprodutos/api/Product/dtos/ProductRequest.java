@@ -9,12 +9,9 @@ import java.util.UUID;
 @Getter
 public class ProductRequest {
 
-    @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @NotBlank(message = "Price is mandatory")
     private BigDecimal price;
 
-    @NotBlank(message = "Supplier is mandatory")
     private UUID supplierId;
 }
