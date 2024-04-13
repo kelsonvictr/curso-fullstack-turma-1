@@ -9,7 +9,7 @@ const ProductList = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('/products?_expand=supplier')
+        axios.get('/products')
         .then(response => {
             setProducts(response.data)
         })
@@ -17,7 +17,7 @@ const ProductList = () => {
     }, []);
 
     const fetchProducts = () => {
-        axios.get('/products?_expand=supplier')
+        axios.get('/products')
             .then(response => {
                 setProducts(response.data)
             })
@@ -52,7 +52,7 @@ const ProductList = () => {
                         <tr key={product.id}>
                           <td>{product.name}</td>
                           <td>{product.price}</td>
-                          <td>{product.supplier.name}</td>
+                          <td>{product.productSupplierDetails.name}</td>
                           <td>
                             <button className="btn btn-sm btn-warning mr-2" onClick={() => navigate(`/editar-produto/${product.id}`)}>Editar</button>
                             <button onClick={() => deleteProduct(product.id)} className="btn btn-sm btn-danger">Excluir</button>
