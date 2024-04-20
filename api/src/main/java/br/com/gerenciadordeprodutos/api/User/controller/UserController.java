@@ -31,7 +31,7 @@ public class UserController {
     @PostMapping("/logout")
     public ResponseEntity<Void> logoutUser(@RequestHeader("Authorization") String token) {
         String actualToken = token.substring(7);
-        jwtTokenService.invalidateToken(token);
+        jwtTokenService.invalidateToken(actualToken);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
