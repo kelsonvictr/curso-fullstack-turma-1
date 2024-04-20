@@ -42,10 +42,16 @@ const ProductForm = () => {
 
     function handleSubmit(event) {
         event.preventDefault()
+
+        const productToSend = {
+            ...product,
+            price: parseFloat(product.price.replace(/,/g, '.'))
+        }
+
         const method = id ? 'put' : 'post'
         const url = id ? `/products/${id}` : '/products'
 
-        axios[method](url, product)
+        axios[method](url, productToSend)
         .then(() => {
             alert(`Produto ${id ? 'atualizado' : 'adicionado'} com sucesso!`)
             navigate("/listar-produtos")
