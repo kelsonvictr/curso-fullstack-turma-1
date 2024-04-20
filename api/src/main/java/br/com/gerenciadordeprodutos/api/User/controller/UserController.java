@@ -1,5 +1,6 @@
 package br.com.gerenciadordeprodutos.api.User.controller;
 
+import br.com.gerenciadordeprodutos.api.Security.authentication.JwtTokenService;
 import br.com.gerenciadordeprodutos.api.User.dtos.CreateUserRequest;
 import br.com.gerenciadordeprodutos.api.User.dtos.LoginUserRequest;
 import br.com.gerenciadordeprodutos.api.User.dtos.RecoveryJwtTokenDto;
@@ -17,11 +18,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private JwtTokenService jwtTokenService;
+
     @PostMapping("/login")
     public ResponseEntity<RecoveryJwtTokenDto> authenticateUser
             (@RequestBody LoginUserRequest loginUserRequest) {
         RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequest);
         return new ResponseEntity<>(token, HttpStatus.OK);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logoutUser(@RequestHeader("Authorization") String token) {
+        String actualToken = token.substring(7);
+        jwtTokenService.invalidateToken(token);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping
