@@ -3,6 +3,7 @@ package br.com.gerenciadordeprodutos.api.Product.controller;
 import br.com.gerenciadordeprodutos.api.Product.dtos.ProductRequest;
 import br.com.gerenciadordeprodutos.api.Product.dtos.ProductResponse;
 import br.com.gerenciadordeprodutos.api.Product.service.ProductService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")
+@RolesAllowed({"ROLE_ADMINISTRATOR", "ROLE_MANAGER"})
 public class ProductController {
 
     @Autowired

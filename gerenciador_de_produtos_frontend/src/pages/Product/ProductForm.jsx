@@ -7,6 +7,7 @@ const ProductForm = () => {
 
     const [product, setProduct] = useState({ name: '', price: '', supplierId: ''})
     const [suppliers, setSuppliers] = useState([])
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate()
     const { id } = useParams()
 
@@ -15,7 +16,10 @@ const ProductForm = () => {
         .then(response => {
             setSuppliers(response.data)
         })
-        .catch(error => console.error('Erro ao buscar fornecedores', error))
+        .catch(error => {
+            console.error('Erro ao buscar fornecedores', error)
+            handleErrors(error);
+    })
 
         if (id) {
             axios.get(`/products/${id}`)
@@ -34,21 +38,48 @@ const ProductForm = () => {
     }
 
     function handleSubmit(event) {
-        event.preventDefault()
-        const method = id ? 'put' : 'post'
-        const url = id ? `/products/${id}` : '/products'
-
-        axios[method](url, product)
+        event.preventDefault();
+    
+        const productToSend = {
+            ...product,
+            price: parseFloat(product.price.replace(/,/g, '.'))
+        };
+    
+        const method = id ? 'put' : 'post';
+        const url = id ? `/products/${id}` : '/products';
+    
+        axios[method](url, productToSend)
         .then(() => {
-            alert(`Produto ${id ? 'atualizado' : 'adicionado'} com sucesso!`)
-            navigate("/listar-produtos")
+            alert(`Produto ${id ? 'atualizado' : 'adicionado'} com sucesso!`);
+            navigate("/listar-produtos");
         })
-        .catch(error => console.error("Ocorreu um erro: ",error))
+        .catch(error => {
+             console.error("Ocorreu um erro: ", error)
+             handleErrors(error);
+    });
+        
+    }
+
+    function handleErrors(error) {
+        if (error.response) {
+            if (error.response.status === 400) {
+                if (Array.isArray(error.response.data)) {
+                    setErrorMessage(error.response.data.join(', '));
+                } else {
+                    setErrorMessage(error.response.data.message || 'Ocorreu um erro desconhecido');
+                }
+            }
+        }
     }
 
   return (
     <div className="container mt-5">
         <h2>{id ? 'Editar Produto' : 'Adicionar Produto'}</h2>
+        {errorMessage && (
+                <div className="alert alert-danger" role="alert">
+                    {errorMessage}
+                </div>
+            )}
         <form onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="name">Nome do Produto:</label>

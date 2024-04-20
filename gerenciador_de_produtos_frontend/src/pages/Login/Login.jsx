@@ -23,6 +23,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
+    <center><img src='./logo.gif' /></center>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
