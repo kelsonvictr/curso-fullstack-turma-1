@@ -5,6 +5,7 @@ import SupplierForm from '../pages/Supplier/SupplierForm';
 import ProductList from '../pages/Product/ProductList';
 import ProductForm from '../pages/Product/ProductForm';
 import CostumerForm from '../pages/Costumer/CostumerForm';
+import CostumerList from '../pages/Costumer/CostumerList';
 import Login from '../pages/Login/Login';
 import PrivateRoute from './PrivateRoute';
 
@@ -19,6 +20,7 @@ const RoutesComponent = () => {
       <Route path="/add-produto" element={<PrivateRoute element={ProductForm} />} />
       <Route path="/editar-produto/:id" element={<PrivateRoute element={ProductForm} />} />
       <Route path="/add-cliente" element={<PrivateRoute element={CostumerForm} />} />
+      <Route path="/listar-clientes" element={<PrivateRoute element={CostumerList} />} />
       <Route path="/login" element={<Login />} />
     </Routes>
   );
