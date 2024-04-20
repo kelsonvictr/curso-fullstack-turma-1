@@ -18,7 +18,6 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    @PreAuthorize("isAnonymous()")
     public ResponseEntity<RecoveryJwtTokenDto> authenticateUser
             (@RequestBody LoginUserRequest loginUserRequest) {
         RecoveryJwtTokenDto token = userService.authenticateUser(loginUserRequest);
@@ -26,7 +25,6 @@ public class UserController {
     }
 
     @PostMapping
-    @PreAuthorize("isAnonymous()")
     public ResponseEntity<Void> createUser(@RequestBody CreateUserRequest createUserRequest) {
         userService.createUser(createUserRequest);
 
@@ -34,7 +32,6 @@ public class UserController {
     }
 
     @GetMapping("/test")
-    @PreAuthorize("hasAuthority('ROLE_ADMINISTRATOR')")
     public ResponseEntity<String> getAuthenticationTest() {
         return new ResponseEntity<>("Success", HttpStatus.OK);
     }
