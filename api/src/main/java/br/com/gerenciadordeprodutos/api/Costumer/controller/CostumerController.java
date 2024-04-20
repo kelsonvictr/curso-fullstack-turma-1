@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/costumers")
 public class CostumerController {
@@ -19,6 +21,12 @@ public class CostumerController {
     @ResponseStatus(HttpStatus.CREATED)
     public CostumerResponse create(@Valid @RequestBody CostumerRequest costumerRequest) {
         return costumerService.create(costumerRequest);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<CostumerResponse> findAll() {
+        return costumerService.findAll();
     }
 
 }

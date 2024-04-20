@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class CostumerServiceImpl implements CostumerService {
@@ -71,7 +72,24 @@ public class CostumerServiceImpl implements CostumerService {
 
     @Override
     public List<CostumerResponse> findAll() {
-        return null;
+        return costumerRepository.findAll().stream()
+                .map(costumer -> new CostumerResponse(
+                        costumer.getId(),
+                        costumer.getName(),
+                        costumer.getCpf(),
+                        costumer.getEmail(),
+                        new CostumerAddressResponse(
+                                costumer.getAddress().getStreet(),
+                                costumer.getAddress().getNumber(),
+                                costumer.getAddress().getNeighborhood(),
+                                costumer.getAddress().getCity(),
+                                costumer.getAddress().getState(),
+                                costumer.getAddress().getCountry(),
+                                costumer.getAddress().getZipCode()
+                        ),
+                        costumer.getCreatedAt()
+                ))
+                .collect(Collectors.toList());
     }
 
     @Override
